@@ -15,7 +15,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.comradegenrr.auto_chinese_fortune.config.CustomAuthenticationEntryPoint;
-import com.comradegenrr.auto_chinese_fortune.config.ExceptionAdvicor;
 import com.comradegenrr.auto_chinese_fortune.config.TokenNotValidateException;
 
 import java.io.IOException;
@@ -37,7 +36,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             throws ServletException, IOException, TokenNotValidateException {
 
         String token = getTokenFromRequest(request);
-        if (!StringUtils.hasText(token) || !jwtTokenProvider.validateToken(token)) {
+        if (StringUtils.hasText(token) && !jwtTokenProvider.validateToken(token)) {
             customAuthenticationEntryPoint.commence(request, response,
                     new TokenNotValidateException("Token not validate"));
             return;
