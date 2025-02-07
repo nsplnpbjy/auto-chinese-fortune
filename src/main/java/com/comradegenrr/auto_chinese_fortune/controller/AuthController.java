@@ -11,6 +11,7 @@ import com.comradegenrr.auto_chinese_fortune.model.User;
 import com.comradegenrr.auto_chinese_fortune.repository.UserRepository;
 import com.comradegenrr.auto_chinese_fortune.security.JwtTokenProvider;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
+@Slf4j
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
@@ -50,6 +52,7 @@ public class AuthController {
                         request.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtTokenProvider.generateToken(authentication);
+        log.info("User {} logged in", request.getUsername());
         return ResponseEntity.ok(new AuthResponse(token));
 
     }
@@ -66,7 +69,7 @@ public class AuthController {
             throw new UserAlreadyExistException("User already exists");
         });
         userRepository.save(user);
-
+        log.info("User {} registered", request.getUsername());
         return ResponseEntity.ok("Registration successful");
     }
 }
