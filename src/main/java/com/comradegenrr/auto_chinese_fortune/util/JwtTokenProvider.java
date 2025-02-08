@@ -1,4 +1,4 @@
-package com.comradegenrr.auto_chinese_fortune.security;
+package com.comradegenrr.auto_chinese_fortune.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

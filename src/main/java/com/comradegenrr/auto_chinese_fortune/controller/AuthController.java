@@ -9,7 +9,8 @@ import com.comradegenrr.auto_chinese_fortune.dto.LoginRequest;
 import com.comradegenrr.auto_chinese_fortune.dto.RegisterRequest;
 import com.comradegenrr.auto_chinese_fortune.model.User;
 import com.comradegenrr.auto_chinese_fortune.repository.UserRepository;
-import com.comradegenrr.auto_chinese_fortune.security.JwtTokenProvider;
+import com.comradegenrr.auto_chinese_fortune.util.JwtTokenProvider;
+
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 

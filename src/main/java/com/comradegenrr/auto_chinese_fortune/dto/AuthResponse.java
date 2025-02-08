@@ -3,7 +3,7 @@ package com.comradegenrr.auto_chinese_fortune.dto;
 import lombok.Data;
 
 @Data
-public class AuthResponse {
+public class AuthResponse extends STDResponse {
 
     private boolean success = true;
 

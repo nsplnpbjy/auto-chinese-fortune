@@ -1,4 +1,4 @@
-package com.comradegenrr.auto_chinese_fortune.security;
+package com.comradegenrr.auto_chinese_fortune.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -16,6 +16,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.comradegenrr.auto_chinese_fortune.config.CustomAuthenticationEntryPoint;
 import com.comradegenrr.auto_chinese_fortune.config.TokenNotValidateException;
+import com.comradegenrr.auto_chinese_fortune.util.JwtTokenProvider;
 
 import java.io.IOException;
 
