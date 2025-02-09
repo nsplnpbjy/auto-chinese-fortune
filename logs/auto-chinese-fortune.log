@@ -1,0 +1,44 @@
+2025-02-10T00:11:38.533+08:00  INFO 74665 --- [auto-chinese-fortune] [main] c.c.a.AutoChineseFortuneApplication      : Starting AutoChineseFortuneApplication using Java 21.0.6 with PID 74665 (/home/comradegenrr/projects/auto-chinese-fortune/build/classes/java/main started by comradegenrr in /home/comradegenrr/projects/auto-chinese-fortune)
+2025-02-10T00:11:38.534+08:00 DEBUG 74665 --- [auto-chinese-fortune] [main] c.c.a.AutoChineseFortuneApplication      : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-02-10T00:11:38.534+08:00  INFO 74665 --- [auto-chinese-fortune] [main] c.c.a.AutoChineseFortuneApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-02-10T00:11:38.852+08:00  INFO 74665 --- [auto-chinese-fortune] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-10T00:11:38.881+08:00  INFO 74665 --- [auto-chinese-fortune] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 1 JPA repository interface.
+2025-02-10T00:11:39.164+08:00  INFO 74665 --- [auto-chinese-fortune] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-02-10T00:11:39.174+08:00  INFO 74665 --- [auto-chinese-fortune] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-02-10T00:11:39.175+08:00  INFO 74665 --- [auto-chinese-fortune] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-02-10T00:11:39.201+08:00  INFO 74665 --- [auto-chinese-fortune] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-02-10T00:11:39.201+08:00  INFO 74665 --- [auto-chinese-fortune] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 643 ms
+2025-02-10T00:11:39.278+08:00  INFO 74665 --- [auto-chinese-fortune] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-10T00:11:39.300+08:00  INFO 74665 --- [auto-chinese-fortune] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-02-10T00:11:39.315+08:00  INFO 74665 --- [auto-chinese-fortune] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-02-10T00:11:39.442+08:00  INFO 74665 --- [auto-chinese-fortune] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-10T00:11:39.456+08:00  INFO 74665 --- [auto-chinese-fortune] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-02-10T00:11:39.533+08:00  INFO 74665 --- [auto-chinese-fortune] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@46c662f2
+2025-02-10T00:11:39.534+08:00  INFO 74665 --- [auto-chinese-fortune] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-02-10T00:11:39.554+08:00  WARN 74665 --- [auto-chinese-fortune] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-02-10T00:11:39.555+08:00  WARN 74665 --- [auto-chinese-fortune] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-02-10T00:11:39.562+08:00  INFO 74665 --- [auto-chinese-fortune] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-02-10T00:11:39.928+08:00  INFO 74665 --- [auto-chinese-fortune] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-10T00:11:39.960+08:00  INFO 74665 --- [auto-chinese-fortune] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-10T00:11:40.128+08:00 DEBUG 74665 --- [auto-chinese-fortune] [main] c.c.a.filter.JwtTokenFilter              : Filter 'jwtTokenFilter' configured for use
+2025-02-10T00:11:40.160+08:00  INFO 74665 --- [auto-chinese-fortune] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-02-10T00:11:40.196+08:00  WARN 74665 --- [auto-chinese-fortune] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-10T00:11:40.540+08:00  INFO 74665 --- [auto-chinese-fortune] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-02-10T00:11:40.544+08:00  INFO 74665 --- [auto-chinese-fortune] [main] c.c.a.AutoChineseFortuneApplication      : Started AutoChineseFortuneApplication in 2.237 seconds (process running for 2.39)
+2025-02-10T00:11:49.453+08:00  INFO 74665 --- [auto-chinese-fortune] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-02-10T00:11:49.453+08:00  INFO 74665 --- [auto-chinese-fortune] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-02-10T00:11:49.454+08:00  INFO 74665 --- [auto-chinese-fortune] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-02-10T00:11:49.728+08:00  INFO 74665 --- [auto-chinese-fortune] [http-nio-8080-exec-1] c.c.a.controller.AuthController          : User nsplnpbjy logged in
+2025-02-10T00:12:55.997+08:00  INFO 74665 --- [auto-chinese-fortune] [http-nio-8080-exec-2] c.c.a.service.FortuneService             : Response body is empty,user:nsplnpbjy
+2025-02-10T00:14:23.543+08:00  INFO 74665 --- [auto-chinese-fortune] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-02-10T00:14:23.547+08:00  INFO 74665 --- [auto-chinese-fortune] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-02-10T00:14:23.557+08:00  INFO 74665 --- [auto-chinese-fortune] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-02-10T00:14:23.558+08:00  INFO 74665 --- [auto-chinese-fortune] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-02-10T00:14:23.573+08:00  INFO 74665 --- [auto-chinese-fortune] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -1,8 +1,10 @@
 package com.comradegenrr.auto_chinese_fortune.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 public class AuthResponse extends STDResponse {
 
     private boolean success = true;
@@ -21,5 +23,4 @@ public class AuthResponse extends STDResponse {
         this.token = null;
     }
 
-    // getter
 }

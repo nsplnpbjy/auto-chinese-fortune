@@ -44,6 +44,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         }
         if (StringUtils.hasText(token) && jwtTokenProvider.validateToken(token)) {
             String username = jwtTokenProvider.getUsernameFromToken(token);
+            request.setAttribute("username", username);
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
             // 创建认证信息

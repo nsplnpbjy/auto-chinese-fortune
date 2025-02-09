@@ -8,6 +8,9 @@ import lombok.Data;
 
 @Data
 public class FortuneRequest {
+
+    private String username;
+
     @NotBlank
     private String asking;
 

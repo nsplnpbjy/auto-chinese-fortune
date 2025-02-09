@@ -19,7 +19,10 @@ import com.comradegenrr.auto_chinese_fortune.model.ChatCompletionResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class FortuneService {
 
         @Autowired
@@ -58,21 +61,30 @@ public class FortuneService {
                                 .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
                                 .build();
 
-                HttpResponse<String> response = java.net.http.HttpClient.newHttpClient().send(request,
-                                HttpResponse.BodyHandlers.ofString());
-                if (response.body().isEmpty()) {
+                java.net.http.HttpClient client = java.net.http.HttpClient.newHttpClient();
+                java.net.http.HttpResponse<String> response = null;
+                try {
+                        response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                } catch (IOException | InterruptedException e) {
+                        log.info("Fortune failed,user:{}", fortuneRequest.getUsername());
+                        throw new FortuneFailedException(e.getMessage());
+                }
+
+                if (response == null || response.body().isEmpty()) {
+                        log.info("Response body is empty,user:{}", fortuneRequest.getUsername());
                         throw new FortuneFailedException("Response body is empty");
                 }
+
                 ChatCompletionResponse chatCompletionResponse = null;
                 try {
                         chatCompletionResponse = new Gson().fromJson(response.body(),
                                         ChatCompletionResponse.class);
                 } catch (JsonSyntaxException e) {
-
+                        log.info("Response body is wrong,user:{}", fortuneRequest.getUsername());
                         throw new FortuneFailedException(e.getMessage());
                 }
 
-                if (!chatCompletionResponse.getChoices().isEmpty()) {
+                if (chatCompletionResponse != null && !chatCompletionResponse.getChoices().isEmpty()) {
                         FortuneResponse fortuneResponse = new FortuneResponse();
                         fortuneResponse.setFortune(
                                         chatCompletionResponse.getChoices().get(0).getMessage().getContent());
@@ -82,13 +94,11 @@ public class FortuneService {
                                         chatCompletionResponse.getChoices().get(0).getMessage().getReasoning_content());
 
                         fortuneResponse.setSuccess(true);
+                        log.info("Fortune success,user:{}", fortuneRequest.getUsername());
                         return fortuneResponse;
                 } else {
-                        FortuneResponse fortuneResponse = new FortuneResponse();
-                        fortuneResponse.setFortune("I'm sorry, I don't know what to say.");
-                        fortuneResponse.setReason("I'm sorry, I don't know what to say.");
-                        fortuneResponse.setSuccess(false);
-                        return fortuneResponse;
+                        log.info("Response body is empty,user:" + fortuneRequest.getUsername());
+                        throw new FortuneFailedException("Response body is empty");
                 }
         }
 
