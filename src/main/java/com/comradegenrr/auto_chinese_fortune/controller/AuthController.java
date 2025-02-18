@@ -1,9 +1,9 @@
 package com.comradegenrr.auto_chinese_fortune.controller;
 
-import com.comradegenrr.auto_chinese_fortune.config.UserAlreadyExistException;
-import com.comradegenrr.auto_chinese_fortune.config.UserNotAvilableException;
-import com.comradegenrr.auto_chinese_fortune.config.UserNotExistException;
-import com.comradegenrr.auto_chinese_fortune.config.WrongPasswordException;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.UserAlreadyExistException;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.UserNotAvilableException;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.UserNotExistException;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.WrongPasswordException;
 import com.comradegenrr.auto_chinese_fortune.dto.AuthResponse;
 import com.comradegenrr.auto_chinese_fortune.dto.LoginRequest;
 import com.comradegenrr.auto_chinese_fortune.dto.RegisterRequest;

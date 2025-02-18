@@ -5,7 +5,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
-import com.comradegenrr.auto_chinese_fortune.dto.AuthResponse;
 import com.comradegenrr.auto_chinese_fortune.dto.STDResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -19,7 +18,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
             AuthenticationException authException) throws IOException, java.io.IOException {
-        STDResponse stdResponse = ExceptionAdvicor.handle(authException);
+        STDResponse stdResponse = doExcepiton(request, authException);
         // 设置响应内容类型为 JSON
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
@@ -32,4 +31,9 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
         // 写入 JSON 数据到响应体
         response.getWriter().write(json);
     }
+
+    public STDResponse doExcepiton(HttpServletRequest request, AuthenticationException authException) {
+        return ExceptionAdvicor.handle(authException);
+    }
+
 }

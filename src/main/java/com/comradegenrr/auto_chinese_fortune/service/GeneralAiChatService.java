@@ -3,8 +3,8 @@ package com.comradegenrr.auto_chinese_fortune.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.comradegenrr.auto_chinese_fortune.config.FortuneFailedException;
 import com.comradegenrr.auto_chinese_fortune.config.AiConfig.AiInfo;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.FortuneFailedException;
 import com.comradegenrr.auto_chinese_fortune.model.ChatCompletionResponse;
 import com.comradegenrr.auto_chinese_fortune.model.ChatMessage;
 import com.comradegenrr.auto_chinese_fortune.model.ChatPayload;

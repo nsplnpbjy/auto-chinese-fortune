@@ -6,8 +6,8 @@ import java.net.URISyntaxException;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-import com.comradegenrr.auto_chinese_fortune.config.FortuneFailedException;
 import com.comradegenrr.auto_chinese_fortune.config.AiConfig.AiInfo;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.FortuneFailedException;
 import com.comradegenrr.auto_chinese_fortune.model.ChatCompletionResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -45,7 +45,7 @@ public class ChatUtil {
         } catch (JsonSyntaxException e) {
             throw new FortuneFailedException(e.getMessage());
         }
-        if (chatCompletionResponse != null && !chatCompletionResponse.getChoices().isEmpty()) {
+        if (chatCompletionResponse != null && chatCompletionResponse.getChoices() != null) {
             return chatCompletionResponse;
         } else {
             throw new FortuneFailedException("Response body dosen't contain chatCompletionResponse");

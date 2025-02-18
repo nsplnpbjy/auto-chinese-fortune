@@ -15,7 +15,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.comradegenrr.auto_chinese_fortune.config.CustomAuthenticationEntryPoint;
-import com.comradegenrr.auto_chinese_fortune.config.TokenNotValidateException;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.TokenNotValidateException;
 import com.comradegenrr.auto_chinese_fortune.util.JwtTokenProvider;
 
 import java.io.IOException;
@@ -60,7 +60,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    private String getTokenFromRequest(HttpServletRequest request) {
+    public String getTokenFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);

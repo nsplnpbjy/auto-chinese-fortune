@@ -1,4 +1,4 @@
-package com.comradegenrr.auto_chinese_fortune.config;
+package com.comradegenrr.auto_chinese_fortune.config.Exceptions;
 
 import org.springframework.security.core.AuthenticationException;
 

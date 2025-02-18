@@ -4,18 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class ChatMessage {
-    private List<Map<String, String>> MessageList;
+    @JsonProperty("MessageList")
+    private List<Map<String, String>> messageList;
+    @JsonProperty("isSystemd")
     private boolean isSystemed;
 
     public ChatMessage() {
-        MessageList = new ArrayList<Map<String, String>>();
-        isSystemed = false;
+        this.messageList = new ArrayList<>();
+        this.isSystemed = false;
     }
 
     public static ChatMessage BuildMessage() {
@@ -23,14 +27,14 @@ public class ChatMessage {
     }
 
     public ChatMessage SetSystemMessage(String systemMessage) {
-        if (isSystemed) {
+        if (this.isSystemed) {
             return this;
         }
         Map<String, String> systemMap = Map.of(
                 "role", "system",
                 "content", systemMessage);
-        MessageList.add(0, systemMap);
-        isSystemed = true;
+        this.messageList.add(0, systemMap);
+        this.isSystemed = true;
         return this;
     }
 
@@ -38,16 +42,15 @@ public class ChatMessage {
         Map<String, String> userMap = Map.of(
                 "role", "user",
                 "content", userMessage);
-        MessageList.add(userMap);
+        this.messageList.add(userMap);
         return this;
     }
 
     public ChatMessage AddAssistantMessage(String assistantMessage) {
-        Map<String, String> assistanMessage = Map.of(
+        Map<String, String> assistantMap = Map.of(
                 "role", "assistant",
                 "content", assistantMessage);
-        MessageList.add(assistanMessage);
+        this.messageList.add(assistantMap);
         return this;
     }
-
 }

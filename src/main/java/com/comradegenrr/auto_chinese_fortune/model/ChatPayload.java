@@ -1,5 +1,6 @@
 package com.comradegenrr.auto_chinese_fortune.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +16,7 @@ public class ChatPayload {
     private Map<String, Object> payload;
 
     public ChatPayload() {
-        payload = Map.of();
+        payload = new HashMap<String, Object>();
     }
 
     public static ChatPayload BuildChatPayload() {

@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.comradegenrr.auto_chinese_fortune.config.UserNotAvilableException;
-import com.comradegenrr.auto_chinese_fortune.config.UserNotExistException;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.UserNotAvilableException;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.UserNotExistException;
 import com.comradegenrr.auto_chinese_fortune.model.User;
 import com.comradegenrr.auto_chinese_fortune.repository.UserRepository;
 

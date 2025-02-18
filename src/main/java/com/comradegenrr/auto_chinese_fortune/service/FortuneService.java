@@ -1,27 +1,18 @@
 package com.comradegenrr.auto_chinese_fortune.service;
 
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.comradegenrr.auto_chinese_fortune.config.FortuneFailedException;
 import com.comradegenrr.auto_chinese_fortune.config.AiConfig.AiInfo;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.FortuneFailedException;
 import com.comradegenrr.auto_chinese_fortune.dto.FortuneRequest;
 import com.comradegenrr.auto_chinese_fortune.dto.FortuneResponse;
 import com.comradegenrr.auto_chinese_fortune.model.ChatCompletionResponse;
 import com.comradegenrr.auto_chinese_fortune.model.ChatMessage;
 import com.comradegenrr.auto_chinese_fortune.model.ChatPayload;
 import com.comradegenrr.auto_chinese_fortune.util.ChatUtil;
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Service

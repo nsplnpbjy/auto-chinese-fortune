@@ -1,13 +1,17 @@
 package com.comradegenrr.auto_chinese_fortune.config;
 
 import org.springframework.security.core.AuthenticationException;
-
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.FortuneFailedException;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.TokenNotValidateException;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.UserAlreadyExistException;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.UserNotAvilableException;
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.UserNotExistException;
 import com.comradegenrr.auto_chinese_fortune.dto.AuthResponse;
 import com.comradegenrr.auto_chinese_fortune.dto.STDResponse;
 
 public class ExceptionAdvicor {
 
-    static public STDResponse handle(AuthenticationException e) {
+    public static STDResponse handle(AuthenticationException e) {
         switch (e.getClass().getName()) {
             case "org.springframework.security.authentication.BadCredentialsException":
                 return new AuthResponse("wrong username or password: " + e.getMessage(), false);
