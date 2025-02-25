@@ -1,6 +1,8 @@
 package com.comradegenrr.auto_chinese_fortune.config;
 
 import org.springframework.security.core.AuthenticationException;
+
+import com.comradegenrr.auto_chinese_fortune.config.Exceptions.ChatFailedException;
 import com.comradegenrr.auto_chinese_fortune.config.Exceptions.FortuneFailedException;
 import com.comradegenrr.auto_chinese_fortune.config.Exceptions.TokenNotValidateException;
 import com.comradegenrr.auto_chinese_fortune.config.Exceptions.UserAlreadyExistException;
@@ -24,6 +26,9 @@ public class ExceptionAdvicor {
             case "com.comradegenrr.auto_chinese_fortune.config.FortuneFailedException":
                 FortuneFailedException a = (FortuneFailedException) e;
                 return a.getFortuneResponse();
+            case "com.comradegenrr.auto_chinese_fortune.config.ChatFailedException":
+                ChatFailedException c = (ChatFailedException) e;
+                return c.getFortuneResponse();
             case "org.springframework.security.authentication.InternalAuthenticationServiceException":
                 Throwable cause = e.getCause();
                 if (cause instanceof UserNotExistException) {
