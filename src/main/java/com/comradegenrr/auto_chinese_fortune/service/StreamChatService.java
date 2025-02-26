@@ -6,6 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpRequest;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,10 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class StreamChatService {
 
     @Autowired
@@ -53,18 +56,24 @@ public class StreamChatService {
 
         java.net.http.HttpClient client = java.net.http.HttpClient.newHttpClient();
         java.net.http.HttpResponse<InputStream> response = null;
+        String assistantReplyString = "";
         try {
             response = client.send(requestForSend, java.net.http.HttpResponse.BodyHandlers.ofInputStream());
             BufferedReader reader = new BufferedReader(new java.io.InputStreamReader(response.body()));
             String line = null;
             while ((line = reader.readLine()) != null) {
-                if (line.trim().isEmpty() || line.contains("keep-alive") || line.contains("[DONE]"))
+                if (line.trim().isEmpty() || line.equals("keep-alive") || line.equals(": keep-alive")
+                        || line.equals("[DONE]") || line.equals("[\"DONE\"]") || line.equals("data: [DONE]"))
                     continue;
 
                 StreamChatResponse output = parseWithGson(line);
-                if (!output.getChat().isBlank() || !output.getReason().isBlank())
+                if (!output.getChat().isBlank() || !output.getReason().isBlank()) {
                     emitter.send(new Gson().toJson(output, StreamChatResponse.class));
+                    assistantReplyString = assistantReplyString + output.getChat();
+                }
             }
+            chatMessage.AddAssistantMessage(assistantReplyString);
+            emitter.send(chatMessage);
             reader.close();
         } catch (InterruptedException e) {
             throw new ChatFailedException("AI服务连接失败");
@@ -119,11 +128,11 @@ public class StreamChatService {
             return streamChatResponse;
 
         } catch (JsonSyntaxException e) {
-            System.err.println("JSON语法错误: " + jsonLine);
+            throw new ChatFailedException("json序列化错误");
         } catch (IllegalStateException e) {
-            System.err.println("类型转换错误: " + e.getMessage());
+            throw new ChatFailedException("AI服务器返回错误");
         } catch (Exception e) {
-            System.err.println("未捕获异常: " + e.getClass().getSimpleName());
+            log.error("未捕获异常: " + e.getClass().getSimpleName());
         }
         return new StreamChatResponse();
     }
